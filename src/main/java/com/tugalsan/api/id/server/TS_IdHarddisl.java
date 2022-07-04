@@ -1,9 +1,9 @@
 package com.tugalsan.api.id.server;
 
-import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 import com.tugalsan.api.stream.client.*;
+import com.tugalsan.api.unsafe.client.*;
 
 public class TS_IdHarddisl {
 
@@ -11,14 +11,12 @@ public class TS_IdHarddisl {
         //TODO LINUX hdparm -i /dev/hda 
         return TGS_StreamUtils.toList(
                 TGS_StreamUtils.of(FileSystems.getDefault().getFileStores())
-                        .map(item -> {
-                            try {
-                                return String.valueOf(item.getAttribute("volume:vsn"));
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
-                                return "N/A";
-                            }
-                        })
+                        .map(item -> TGS_UnSafe.compile(() -> {
+                    return String.valueOf(item.getAttribute("volume:vsn"));
+                }, e -> {
+                    e.printStackTrace();
+                    return "N/A";
+                }))
         );
     }
 }
