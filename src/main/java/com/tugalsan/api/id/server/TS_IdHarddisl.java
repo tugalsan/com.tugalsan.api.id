@@ -9,7 +9,7 @@ public class TS_IdHarddisl {
 
     public static List<String> get() {
         //TODO LINUX hdparm -i /dev/hda 
-        return TGS_StreamUtils.toList(
+        return TGS_StreamUtils.toLst(
                 TGS_StreamUtils.of(FileSystems.getDefault().getFileStores())
                         .map(item -> TGS_UnSafe.compile(() -> {
                     return String.valueOf(item.getAttribute("volume:vsn"));
