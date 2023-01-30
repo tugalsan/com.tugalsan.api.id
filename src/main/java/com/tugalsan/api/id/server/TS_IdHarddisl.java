@@ -8,7 +8,7 @@ import com.tugalsan.api.unsafe.client.*;
 public class TS_IdHarddisl {
 
     public static List<String> get() {
-        //TODO LINUX hdparm -i /dev/hda 
+        //TODO get: add LINUX implementaion: hdparm -i /dev/hda 
         return TGS_StreamUtils.toLst(
                 TGS_StreamUtils.of(FileSystems.getDefault().getFileStores())
                         .map(item -> TGS_UnSafe.compile(() -> {
