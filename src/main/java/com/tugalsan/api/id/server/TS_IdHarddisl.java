@@ -11,7 +11,7 @@ public class TS_IdHarddisl {
         //TODO get: add LINUX implementaion: hdparm -i /dev/hda 
         return TGS_StreamUtils.toLst(
                 TGS_StreamUtils.of(FileSystems.getDefault().getFileStores())
-                        .map(item -> TGS_UnSafe.compile(() -> {
+                        .map(item -> TGS_UnSafe.call(() -> {
                     return String.valueOf(item.getAttribute("volume:vsn"));
                 }, e -> {
                     e.printStackTrace();
