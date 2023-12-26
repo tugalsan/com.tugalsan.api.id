@@ -5,7 +5,7 @@ import java.util.*;
 import com.tugalsan.api.stream.client.*;
 import com.tugalsan.api.unsafe.client.*;
 
-public class TS_IdHarddisl {
+public class TS_IdHarddisk {
 
     public static List<String> get() {
         //TODO get: add LINUX implementaion: hdparm -i /dev/hda 
