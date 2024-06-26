@@ -2,14 +2,14 @@ package com.tugalsan.api.id.server;
 
 import com.tugalsan.api.os.server.TS_OsPlatformUtils;
 import com.tugalsan.api.os.server.TS_OsProcess;
-import com.tugalsan.api.string.server.TS_StringUtils;
+import com.tugalsan.api.string.client.TGS_StringUtils;
 
 public class TS_IdMachineUtils {
 
     public static String get() {
         if (TS_OsPlatformUtils.isWindows()) {
             var str = TS_OsProcess.of("wmic csproduct get UUID").output;
-            var lst = TS_StringUtils.toList_spc(str);
+            var lst = TGS_StringUtils.jre().toList_spc(str);
             for (var item : lst) {
                 item = item.trim();
                 if (item.isEmpty() || item.equals("UUID")) {
