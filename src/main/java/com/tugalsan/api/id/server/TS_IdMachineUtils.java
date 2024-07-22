@@ -7,6 +7,9 @@ import com.tugalsan.api.string.client.TGS_StringUtils;
 public class TS_IdMachineUtils {
 
     public static String get() {
+        if (SYNC != null) {
+            return SYNC;
+        }
         if (TS_OsPlatformUtils.isWindows()) {
             var str = TS_OsProcess.of("wmic csproduct get UUID").output;
             var lst = TGS_StringUtils.jre().toList_spc(str);
@@ -32,4 +35,5 @@ public class TS_IdMachineUtils {
             return null;
         }
     }
+    private static volatile String SYNC = null;
 }
