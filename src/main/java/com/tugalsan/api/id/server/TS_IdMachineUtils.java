@@ -18,22 +18,24 @@ public class TS_IdMachineUtils {
                 if (item.isEmpty() || item.equals("UUID")) {
                     continue;
                 }
-                return item;
+                return SYNC = item;
             }
             return null;
-        } else if (TS_OsPlatformUtils.isMac()) {
-            return TS_OsProcess.of("system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }").output;
-        } else if (TS_OsPlatformUtils.isLinux()) {
-            return TS_OsProcess.of("# cat /sys/class/dmi/id/product_uuid").output;
-        } else if (TS_OsPlatformUtils.isUnix()) {
-            return TS_OsProcess.of(new String[]{
+        }
+        if (TS_OsPlatformUtils.isMac()) {
+            return SYNC = TS_OsProcess.of("system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }").output;
+        }
+        if (TS_OsPlatformUtils.isLinux()) {
+            return SYNC = TS_OsProcess.of("# cat /sys/class/dmi/id/product_uuid").output;
+        }
+        if (TS_OsPlatformUtils.isUnix()) {
+            return SYNC = TS_OsProcess.of(new String[]{
                 "/bin/sh",
                 "-c",
                 "echo <password for superuser> | sudo -S cat /sys/class/dmi/id/product_uuid"
             }).output;
-        } else {
-            return null;
         }
+        return null;
     }
     private static volatile String SYNC = null;
 }
