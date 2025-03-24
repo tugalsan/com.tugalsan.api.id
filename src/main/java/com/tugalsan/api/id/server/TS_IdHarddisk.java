@@ -1,6 +1,6 @@
 package com.tugalsan.api.id.server;
 
-import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
+import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
 import java.nio.file.*;
 import java.util.*;
 import com.tugalsan.api.stream.client.*;
@@ -13,7 +13,7 @@ public class TS_IdHarddisk {
         //TODO get: add LINUX implementaion: hdparm -i /dev/hda 
         return TGS_StreamUtils.toLst(
                 TGS_StreamUtils.of(FileSystems.getDefault().getFileStores())
-                        .map(item -> TGS_FuncMTCEUtils.call(() -> {
+                        .map(item -> TGS_FuncMTCUtils.call(() -> {
                     return TGS_UnionExcuse.of(String.valueOf(item.getAttribute("volume:vsn")));
                 }, e -> {
                     return TGS_UnionExcuse.ofExcuse(e);
