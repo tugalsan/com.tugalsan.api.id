@@ -6,12 +6,16 @@ import com.tugalsan.api.string.client.TGS_StringUtils;
 
 public class TS_IdMachineUtils {
 
+    @Deprecated //TODO can return null;
     public static String get() {
         if (SYNC != null) {
             return SYNC;
         }
         if (TS_OsPlatformUtils.isWindows()) {
             var str = TS_OsProcess.of("wmic csproduct get UUID").output;
+            if (str == null) {
+                return null;
+            }
             var lst = TGS_StringUtils.jre().toList_spc(str);
             for (var item : lst) {
                 item = item.trim();
