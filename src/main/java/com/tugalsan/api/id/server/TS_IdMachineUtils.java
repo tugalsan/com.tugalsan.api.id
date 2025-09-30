@@ -1,8 +1,7 @@
 package com.tugalsan.api.id.server;
 
-import com.tugalsan.api.os.server.TS_OsPlatformUtils;
-import com.tugalsan.api.os.server.TS_OsProcess;
-import com.tugalsan.api.string.client.TGS_StringUtils;
+import module com.tugalsan.api.os;
+import module com.tugalsan.api.string;
 
 public class TS_IdMachineUtils {
 

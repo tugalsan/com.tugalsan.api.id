@@ -1,11 +1,10 @@
 package com.tugalsan.api.id.server;
 
-import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
+import module com.tugalsan.api.function;
+import module com.tugalsan.api.stream;
+import module com.tugalsan.api.union;
 import java.nio.file.*;
 import java.util.*;
-import com.tugalsan.api.stream.client.*;
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
-
 
 public class TS_IdHarddisk {
 
